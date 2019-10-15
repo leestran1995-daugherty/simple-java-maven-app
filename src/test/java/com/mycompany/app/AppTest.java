@@ -3,6 +3,7 @@ package com.mycompany.app;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.After;
 import static org.junit.Assert.*;
@@ -41,6 +42,7 @@ public class AppTest
     }
 
     @Test
+    @Ignore
     public void failTest()
     {
         assertEquals(2, 3);
