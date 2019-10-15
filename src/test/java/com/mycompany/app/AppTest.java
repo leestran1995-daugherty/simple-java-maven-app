@@ -40,6 +40,12 @@ public class AppTest
         }
     }
 
+    @Test
+    public void failTest()
+    {
+        assertEquals(2, 3);
+    }
+
     @After
     public void cleanUpStreams() {
         System.setOut(null);
