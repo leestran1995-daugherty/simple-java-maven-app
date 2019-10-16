@@ -31,7 +31,7 @@ pipeline {
                 sh 'mvn --batch-mode -V -U -e checkstyle:checkstyle pmd:pmd'
                 script {
                     if (env.CHANGE_ID) {
-                        pullRequest.comment("Analyzing pull request")
+                        pullRequest.comment('Analyzing pull request')
                     }
                 }
             }
@@ -40,8 +40,7 @@ pipeline {
     post {
         always {
              recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle()
-              recordIssues enabledForFailure: true, aggregatingResults: true, tool: pmdParser()
-
+             recordIssues enabledForFailure: true, aggregatingResults: true, tool: pmdParser()
         }
     }
 }
