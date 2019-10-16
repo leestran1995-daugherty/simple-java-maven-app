@@ -21,9 +21,14 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
+//         stage('Deliver') {
+//             steps {
+//                 sh './jenkins/scripts/deliver.sh'
+//             }
+//         }
+        stage('Analysis') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
+                sh '${M2_HOME}/bin/mvn --batch-mode -V -U -e checkstyle:checkstyle'
             }
         }
     }
