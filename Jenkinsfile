@@ -28,14 +28,13 @@ pipeline {
 //         }
         stage('Analysis') {
             steps {
-                sh '${M2_HOME}/bin/mvn --batch-mode -V -U -e checkstyle:checkstyle'
+                sh 'mvn --batch-mode -V -U -e checkstyle:checkstyle'
             }
         }
     }
     post {
         always {
              recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle()
-             recordIssues enabledForFailure: true, aggregatingResults: true, tool: spotBugs()
         }
     }
 }
