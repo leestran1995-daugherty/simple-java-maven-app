@@ -29,7 +29,11 @@ pipeline {
         stage('Analysis') {
             steps {
                 sh 'mvn --batch-mode -V -U -e checkstyle:checkstyle pmd:pmd'
-
+                script {
+                    if (env.CHANGE_ID) {
+                        pullRequest.comment("Analyzing pull request")
+                    }
+                }
             }
         }
     }
