@@ -28,13 +28,16 @@ pipeline {
 //         }
         stage('Analysis') {
             steps {
-                sh 'mvn --batch-mode -V -U -e checkstyle:checkstyle'
+                sh 'mvn --batch-mode -V -U -e checkstyle:checkstyle pmd:pmd'
+
             }
         }
     }
     post {
         always {
              recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle()
+              recordIssues enabledForFailure: true, aggregatingResults: true, tool: pmdParser()
+
         }
     }
 }
